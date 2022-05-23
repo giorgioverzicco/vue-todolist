@@ -13,3 +13,10 @@
 body {
   font-family: "Roboto", sans-serif;
 }
+
+/* ==================
+  UTILITY
+================== */
+.done {
+  text-decoration: line-through;
+}

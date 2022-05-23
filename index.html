@@ -16,8 +16,39 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    <div id="app">
-
+    <div id="app" class="container">
+      <div class="new-todo">
+        <form @submit.prevent="addTodo">
+          <input
+            type="text"
+            placeholder="Aggiungi un todo"
+            v-model="newTodo"
+            @keyup.enter="addTodo"
+            required
+          >
+          <button type="submit">
+            <i class="fa-solid fa-plus"></i>
+          </button>
+        </form>
+      </div>
+      <div class="todos">
+        <p class="todo-tag">Da fare - {{ todos.length }}</p>
+        <ul class="todo-list">
+          <li class="todo-list-item" v-for="(todo, idx) in todos" :key="todo.id">
+            <button @click="completeTodo(todo)">
+              <i class="fa-solid fa-check"></i>
+            </button>
+            <span :class="{ done: todo.done }" v-if="!todo.editMode">{{ todo.text }}</span>
+            <input type="text" v-model="todo.text" v-if="todo.editMode" @keyup.enter="editTodo(todo)">
+            <button @click="editTodo(todo)">
+              <i class="fa-solid fa-pencil"></i>
+            </button>
+            <button @click="deleteTodo(idx)">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </li>
+        </ul>
+      </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
