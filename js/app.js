@@ -31,6 +31,14 @@ const app = new Vue({
       },
     ],
   },
+  computed: {
+    uncompletedTodos() {
+      return this.todos.filter((todo) => !todo.done);
+    },
+    completedTodos() {
+      return this.todos.filter((todo) => todo.done);
+    },
+  },
   methods: {
     addTodo() {
       if (!this.newTodo) return;
