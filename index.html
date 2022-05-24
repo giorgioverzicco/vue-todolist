@@ -45,7 +45,7 @@
               <button class="btn btn-complete" :class="{ 'btn-complete--checked': todo.done }" @click="completeTodo(todo)">
               </button>
               <span :class="{ 'todo-list-item--done': todo.done }" v-if="!todo.editMode">{{ todo.text }}</span>
-              <input type="text" v-model="todo.text" v-if="todo.editMode" @keyup.enter="editTodo(todo)">
+              <input type="text" v-model="todo.text" @keyup.enter="editTodo(todo)" v-else>
               <div class="todo-actions">
                 <button class="btn btn-edit" @click="editTodo(todo)">
                   <i class="fa-solid fa-pencil"></i>
